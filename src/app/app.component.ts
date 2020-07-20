@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import {routing, appRoutingProviders  } from "./app-routing.module";
 import { UserService } from './services/user.service';
 
@@ -25,6 +25,12 @@ export class AppComponent implements OnInit{
 this.loadUser();
     
   }
+
+ngDoCheck(): void {
+this.loadUser();
+  
+}
+
   loadUser(){
     this.identity= this._userService.getIdentity();
     this.token=this._userService.getToken();

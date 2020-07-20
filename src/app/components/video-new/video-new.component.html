@@ -1,0 +1,47 @@
+<div class="col-md-12 mt-3">
+    <h1>{{page_title}}</h1>
+    <hr>
+
+    <div class="alert alert-primary" role="alert" *ngIf="status=='success'">
+       Video Guardado Correctamente
+      </div>
+      
+      <div class="alert alert-danger" role="alert" *ngIf="status=='error'">
+        Error al guardar video
+      </div>
+
+<form class="col-md-5 ml-0 mr-0" #videoNew="ngForm" (ngSubmit)="onSubmit(videoNew)">
+<div class="form-group">
+<label for="title">Titulo</label>
+<input type="text" #title="ngModel" [(ngModel)]="video.title" name="title" class="form-control"  required>
+
+<small *ngIf="!title.valid && title.touched" class="invalid-feedback d-block">
+    El titulo no es valido
+</small>
+</div>
+
+
+<div class="form-group">
+    <label for="description">Descripcion</label>
+    <textarea type="text" #description="ngModel" [(ngModel)]="video.description" name="description" class="form-control" required></textarea>
+    
+    <small *ngIf="!description.valid && description.touched" class="invalid-feedback d-block">
+       La descripcion no es valida
+    </small>
+    </div>
+
+    <div class="form-group">
+        <label for="url">URL</label>
+        <input type="text" #myurl="ngModel" [(ngModel)]="video.url" name="url" class="form-control"  required>
+        
+        <small *ngIf="!myurl.valid && myurl.touched" class="invalid-feedback d-block">
+      La Url no es valida
+        </small>
+        </div>
+
+
+            <input type="submit"  class="btn btn-outline-primary" value="Guardar" [disabled]="videoNew.invalid">
+
+</form>
+
+    </div>

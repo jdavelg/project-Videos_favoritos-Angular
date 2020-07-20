@@ -19,7 +19,7 @@
           <a class="nav-link" href="#">Mis videos</a>
         </li>     
         <li class="nav-item" *ngIf="identity">
-          <a class="nav-link" href="#">Guardar Favorito</a>
+          <a class="nav-link" [routerLink]="[ '/guardar-favorito']">Guardar Favorito</a>
         </li>     
       </ul>
 
@@ -40,7 +40,7 @@
         <span *ngIf="identity">{{ identity.name + ' '+identity.surname}}</span> 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Ajustes</a>
+          <a class="dropdown-item" [routerLink]="[ '/ajustes']">Ajustes</a>
           <a class="dropdown-item" [routerLink]="[ '/logout/1']">Salir</a>
           <div class="dropdown-divider"></div>
           
@@ -52,5 +52,10 @@
 <!-- <contenido> -->
   <router-outlet></router-outlet>
   
+<footer>
+  <hr>
+  <p>Jonathan Lopez &copy; 2020</p>
+</footer>
+
 </div>
 

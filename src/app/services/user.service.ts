@@ -73,4 +73,16 @@ getToken(){
 }
 return this.token;
 }
+
+update(token, user):any{
+  
+  let json= JSON.stringify(user);
+  let params= 'json='+json;
+  
+  
+  let headers= new HttpHeaders().set('Conten-Type', 'application/x-www-form-urlencoded').set('Authorization', token);
+
+  return this._http.put(this.url+'user/edit', params, {headers:headers})
+}
+
 }

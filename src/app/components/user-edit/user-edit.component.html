@@ -1,0 +1,47 @@
+<div class="col-md-12 mt-3">
+    <h1>{{page_title}}</h1>
+    <hr>
+
+    <div class="alert alert-primary" role="alert" *ngIf="status=='success'">
+       Datos Actualizados Correctamente
+      </div>
+      
+      <div class="alert alert-danger" role="alert" *ngIf="status=='error'">
+        Error al actualizar
+      </div>
+
+<form class="col-md-5 ml-0 mr-0" #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
+<div class="form-group">
+<label for="name">Nombre</label>
+<input type="text" #name="ngModel" [(ngModel)]="user.name" name="name" class="form-control" pattern="[a-zA-Z ]+" required>
+
+<small *ngIf="!name.valid && name.touched" class="invalid-feedback d-block">
+    El nombre no es valido
+</small>
+</div>
+
+
+<div class="form-group">
+    <label for="surname">Apellidos</label>
+    <input type="text" #surname="ngModel" [(ngModel)]="user.surname" name="surname" class="form-control" pattern="[a-zA-Z ]+" required>
+    
+    <small *ngIf="!surname.valid && surname.touched" class="invalid-feedback d-block">
+        El apellido no es valido
+    </small>
+    </div>
+
+    <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" #email="ngModel" [(ngModel)]="user.email" name="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+        
+        <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+            El email no es valido
+        </small>
+        </div>
+
+
+            <input type="submit"  class="btn btn-outline-primary" value="Actualizar" [disabled]="userEditForm.invalid">
+
+</form>
+
+    </div>
